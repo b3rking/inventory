@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// the whole app will run under the prefix of dashboard!
+// the whole app will run under the prefix of dashboard! except auth
 Route::prefix('dashboard')->group(function() {
 
     Route::get('/', function() {
         return 'dashboard main view';
-    });
+    })->name('dashboard');
 });

@@ -1,6 +1,7 @@
 <?php
 
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 return [
@@ -74,7 +75,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => 'auth',
 
     'domain' => null,
 
