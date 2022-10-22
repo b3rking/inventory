@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // the whole app will run under the prefix of dashboard! except auth
-Route::prefix('dashboard')->group(function() {
+Route::middleware('auth')->prefix('dashboard')->group(function() {
 
-    Route::get('/', function() {
-        return 'dashboard main view';
-    })->name('dashboard');
+    Route::get('/', [AppController::class, 'dashboard'])->name('dashboard');
 });
+
+Route::post('/auth/logout', [AppController::class, 'logout']);
