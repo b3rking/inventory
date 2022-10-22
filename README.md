@@ -12,7 +12,3 @@ Register products, categories, receipts, users, and others.
 Reports and statistics on income and expenditure.
 Manage sales, payments, and transactions.
 View clients’ payment history.
-
-#### App Snippets
-
-!["some snipets"](http://45.76.161.208/wp-content/uploads/2020/08/1.png)
