@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->prefix('dashboard')->group(function() {
 
     Route::get('/', [AppController::class, 'dashboard'])->name('dashboard');
+    Route::resource('categories', CategoryController::class);
+});
+
+Route::get('/', function() {
+    return redirect('/dashboard');
 });
 
 Route::post('/auth/logout', [AppController::class, 'logout']);
