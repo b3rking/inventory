@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    private $categoryRepository;
+
+    public function __construct(CategoryRepository $cateRepo)
+    {
+        $this->categoryRepository = $cateRepo;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::latest()->get();
+        return $this->categoryRepository->all();
     }
 
     /**
