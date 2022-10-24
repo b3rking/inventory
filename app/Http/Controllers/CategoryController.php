@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Repositories\CategoryRepository;
 
 class CategoryController extends Controller
 {
+    private $categoryRepository;
+
+    public function __construct(CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +23,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index')
-                ->with('categories', Category::latest()->get());
+                ->with('categories', $this->categoryRepository->index());
     }
 
     /**
@@ -38,13 +45,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'min:3', 'max:15'],
-            'user_id' => ['required', 'int', 'min:1']
-        ]);
-
-        Category::create($request->only('name', 'user_id'));
-
+        $this->categoryRepository->store($request);
         return redirect()
                     ->route('categories.index')
                     ->with('msg', 'category created successfully');
@@ -84,12 +85,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'min:3', 'max:15'],
-            'user_id' => ['required', 'int', 'min:1']
-        ]);
-
-        $category->update($request->only('name', 'user_id'));
+        $this->categoryRepository->update($request, $category);
 
         return redirect()
                     ->route('categories.index')
@@ -104,7 +100,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
+        $this->categoryRepository->delete($category);
 
         return redirect()
                 ->route('categories.index')
