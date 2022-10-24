@@ -7,14 +7,25 @@
     <title>Inventory - @yield('title', 'dashboard')</title>
 </head>
 <body>
-    <h1>DASHBOARD</h1>
+    <header>
+    <h1><a href="{{ route('dashboard') }}">DASHBOARD</a></h1>
     @auth    
     <p>{{ Auth::user()->name }}</p>
     <form action="/auth/logout" method="post">
         @csrf
         <button type="submit">logout</button>
     </form>
+    </header>
     @endauth
-    @yield('content')
+    <main>
+        <div class="side-menu">
+            <ul>
+                <li><a href="{{ route('categories.index') }}">Categories</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            @yield('content')
+        </div>
+    </main>
 </body>
 </html>

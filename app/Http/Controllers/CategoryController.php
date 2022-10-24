@@ -3,19 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Repositories\CategoryRepository;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
-    private $categoryRepository;
-
-    public function __construct(CategoryRepository $cateRepo)
-    {
-        $this->categoryRepository = $cateRepo;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return $this->categoryRepository->all();
+        return view('category.index')
+                ->with('categories', Category::latest()->get());
     }
 
     /**
@@ -33,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create')
+                ->with('users', User::all(['id', 'name']));
     }
 
     /**
@@ -44,7 +38,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'min:3', 'max:15'],
+            'user_id' => ['required', 'int', 'min:1']
+        ]);
+
+        Category::create($request->only('name', 'user_id'));
+
+        return redirect()->route('categories.index');
     }
 
     /**
