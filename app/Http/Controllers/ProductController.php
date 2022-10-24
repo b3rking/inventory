@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Repositories\ProductRepository;
+
 
 class ProductController extends Controller
 {
+
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('product.index')
+                ->with('products', $this->productRepository->index());
     }
 
     /**
@@ -24,7 +35,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create')
+                ->with('categories', Category::all('id', 'name'));
     }
 
     /**
@@ -35,7 +47,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->productRepository->store($request);
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -46,7 +60,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('product.show')
+                ->with('product', $this->productRepository->show($product));
     }
 
     /**
@@ -57,7 +72,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.edit')
+                ->with('product', $product)
+                ->with('categories', Category::all('id', 'name'));
     }
 
     /**
@@ -69,7 +86,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $this->productRepository->update($request, $product);
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -80,6 +99,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $this->productRepository->delete($product);
+
+        return redirect()->route('products.index');
     }
 }

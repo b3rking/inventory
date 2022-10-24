@@ -22,6 +22,9 @@
             <ul>
                 <li><a href="{{ route('categories.index') }}">Categories</a></li>
             </ul>
+            <ul>
+                <li><a href="{{ route('products.index') }}">Products</a></li>
+            </ul>
         </div>
         <div class="content">
             @yield('content')

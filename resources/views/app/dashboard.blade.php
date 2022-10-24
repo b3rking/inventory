@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
 
-    <h1>hehe!</h1>
+    <h1>Main...</h1>
 
 @endsection

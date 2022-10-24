@@ -1,17 +1,19 @@
 @extends('app')
-@section('title', 'Categories list')
+@section('title', 'products list')
 @section('content')
-    <h1>List of all categories</h1>
-    <a href="{{ route('categories.create') }}">add category</a>
+    <h1>List of all products</h1>
+    <a href="{{ route('products.create') }}">add product</a>
     <ul>
-        @foreach ($categories as $category)
+        @foreach ($products as $product)
         <li>
             <div class="">
                 <p>
-                    <a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+                    <a href="{{ route('products.show', $product->id) }}">{{ $product->name }}</a>
+                    <p>category : {{ $product->category->name }}</p>
+                    <p>user : {{ $product->user->name }}</p>
                 </p>
-                <a href="{{ route('categories.edit', $category->id) }}">edit</a>
-                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                <a href="{{ route('products.edit', $product->id) }}">edit</a>
+                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                     @csrf
                     @method('delete')
                     <button type="submit">delete</button>

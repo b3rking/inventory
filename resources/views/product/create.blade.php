@@ -1,8 +1,8 @@
 @extends('app')
-@section('title', 'New Category')
+@section('title', 'New product')
 @section('content')
 
-    <h1>Add new category</h1>
+    <h1>Add new product</h1>
     @if ($errors->any())
     <ul>
         @foreach ($errors->all() as $error)
@@ -10,12 +10,29 @@
         @endforeach    
     </ul>
     @endif
-    <form action="{{ route('categories.store') }}" method="POST">
+    <form action="{{ route('products.store') }}" method="POST">
         @csrf
         <div class="">
             <label for="name">name</label>
-            <input type="text" name="name" id="" placeholder="fruits">
+            <input type="text" name="name" id="" placeholder="mangoes" required>
         </div>
+        <div class="">
+            <label for="category">category</label>
+            <select name="category_id">
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="">
+            <label for="purchase_price">purchase price</label>
+            <input type="number" name="purchase_price" placeholder="100">
+        </div>
+        <div class="">
+            <label for="sell_price">sell price</label>
+            <input type="number" name="sell_price" placeholder="100">
+        </div>
+
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <button type="submit">Create</button>
     </form>
