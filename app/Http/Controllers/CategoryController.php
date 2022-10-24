@@ -45,7 +45,9 @@ class CategoryController extends Controller
 
         Category::create($request->only('name', 'user_id'));
 
-        return redirect()->route('categories.index');
+        return redirect()
+                    ->route('categories.index')
+                    ->with('msg', 'category created successfully');
     }
 
     /**
@@ -56,7 +58,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('category.show')
+                ->with('category', $category);
     }
 
     /**
@@ -67,7 +70,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit')
+                ->with('category', $category)
+                ->with('users', User::all(['id', 'name']));
     }
 
     /**
@@ -79,7 +84,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'min:3', 'max:15'],
+            'user_id' => ['required', 'int', 'min:1']
+        ]);
+
+        $category->update($request->only('name', 'user_id'));
+
+        return redirect()
+                    ->route('categories.index')
+                    ->with('msg', 'category updated successfully');
     }
 
     /**
@@ -90,6 +104,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()
+                ->route('categories.index')
+                ->with('msg', 'category deleted successfully');
     }
 }
