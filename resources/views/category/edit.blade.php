@@ -10,8 +10,9 @@
         @endforeach    
     </ul>
     @endif
-    <form action="{{ route('categories.update', $category->id) }}" method="PUT">
+    <form action="{{ route('categories.update', $category->id) }}" method="POST">
         @csrf
+        @method('put')
         <div class="">
             <label for="name">name</label>
             <input type="text" name="name" value="{{ $category->name }}">
