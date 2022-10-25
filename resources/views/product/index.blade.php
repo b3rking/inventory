@@ -1,7 +1,8 @@
 @extends('app')
 @section('title', 'products list')
 @section('content')
-    <h1>List of all products</h1>
+    {{-- <h1>List of all products</h1> --}}
+    <x-ui.maintitle content="List of all products" />
     <a href="{{ route('products.create') }}">add product</a>
     <ul>
         @foreach ($products as $product)
