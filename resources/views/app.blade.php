@@ -25,6 +25,12 @@
             <ul>
                 <li><a href="{{ route('products.index') }}">Products</a></li>
             </ul>
+            <ul>
+                <li><a href="{{ route('clients.index') }}">Clients</a></li>
+            </ul>
+            <ul>
+                <li><a href="{{ route('users.index') }}">Users</a></li>
+            </ul>
         </div>
         <div class="content">
             @yield('content')
