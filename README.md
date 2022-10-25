@@ -12,3 +12,43 @@ Register products, categories, receipts, users, and others.
 Reports and statistics on income and expenditure.
 Manage sales, payments, and transactions.
 View clients’ payment history.
+
+#### managing logic :
+
+- clients:
+    * a client is a user who has bought sth in the shop
+
+- stock:
+    * the stock will contain our products (name, qty de ce produit)
+    - CRUD
+
+- receipts:
+    * receipts have (client name, product(s) name, sell price, qty, total price)
+    - create
+    - show one receipts (maybe printing one in pdf.. challenge hehe :))
+    - delete one
+    - view all
+
+- sales:
+    * sales have a product name, qty, total price
+    - create
+    - show one sale
+    - delete
+    - view all
+
+- payments:
+    * payments have the client name, receipts
+    - create
+    - show one
+    - delete
+    - view all
+    - show one client payments
+
+- transactions:
+    * transaction have the client, all the product on the receipts, receipts
+    - create
+    - show one
+    - delete
+    - view all
+
+- Reports and statistics on income and expenditure.
