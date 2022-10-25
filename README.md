@@ -14,9 +14,11 @@ Manage sales, payments, and transactions.
 View clients’ payment history.
 
 #### managing logic :
-
-- clients:
-    * a client is a user who has bought sth in the shop
+- products: ✔
+- categories: ✔
+- receipts: ✔
+- users: ✔
+- clients: ✔
 
 - stock:
     * the stock will contain our products (name, qty de ce produit)
