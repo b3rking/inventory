@@ -21,8 +21,7 @@ View clients’ payment history.
 - clients: ✔
 
 - stock:
-    * the stock will contain our products (name, qty de ce produit)
-    - CRUD
+    **** rethink
 
 - receipts:
     * receipts have (client name, product(s) name, sell price, qty, total price)
