@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylsheet" href="/css/app.css" />
     <title>Inventory - @yield('title', 'dashboard')</title>
 </head>
 <body>
     <header>
-    <h1><a href="{{ route('dashboard') }}">DASHBOARD</a></h1>
+    <h1><a href="{{ route('dashboard') }}" class="text-2xl">DASHBOARD</a></h1>
     @auth    
     <p>{{ Auth::user()->name }}</p>
     <form action="/auth/logout" method="post">
@@ -36,5 +37,6 @@
             @yield('content')
         </div>
     </main>
+    <script src="/js/app.js"></script>
 </body>
 </html>
