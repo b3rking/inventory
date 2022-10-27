@@ -16,7 +16,6 @@ class CreateReceiptsTable extends Migration
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
-            // 'client_id', 'product_id', 'sell_price', 'quantity', 'total_price'
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Product::class);
