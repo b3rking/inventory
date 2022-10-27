@@ -17,6 +17,10 @@
             <input type="text" name="name" id="" placeholder="mangoes" required>
         </div>
         <div class="">
+            <label for="quantity">quantity</label>
+            <input type="text" name="quantity" placeholder="1" required>
+        </div>
+        <div class="">
             <label for="category">category</label>
             <select name="category_id">
                 @foreach ($categories as $category)
@@ -26,11 +30,11 @@
         </div>
         <div class="">
             <label for="purchase_price">purchase price</label>
-            <input type="number" name="purchase_price" placeholder="100">
+            <input type="number" name="purchase_price" step="50" placeholder="100">
         </div>
         <div class="">
             <label for="sell_price">sell price</label>
-            <input type="number" name="sell_price" placeholder="100">
+            <input type="number" name="sell_price" step="50" placeholder="100">
         </div>
 
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">

@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->foreignIdFor(Category::class);
             $table->foreignIdFor(User::class);
             $table->integer('purchase_price');
+            $table->integer('quantity');
             $table->integer('sell_price');
             $table->timestamps();
         });

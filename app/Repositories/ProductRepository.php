@@ -7,12 +7,23 @@ use Illuminate\Http\Request;
 
 class ProductRepository {
 
+    private $request_data;
+
+    public function __construct(Request $request)
+    {
+        $this->request_data = $request
+                                    ->only(
+                                        'name', 'category_id', 'user_id', 'quantity',
+                                         'purchase_price', 'sell_price');
+    }
+
     public function validation(Request $request) {
         $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:30', 'unique:products'],
             'category_id' => ['required'],
             'user_id' => ['required'],
             'purchase_price' => ['required', 'integer'],
+            'quantity' => ['required', 'min:1'],
             'sell_price' => ['required'] 
         ]);
     }
@@ -24,11 +35,7 @@ class ProductRepository {
     public function store(Request $request) {
         $this->validation($request);
 
-        Product::create(
-            $request->only(
-                'name', 'category_id', 'user_id', 'purchase_price', 'sell_price'
-            )
-        );
+        Product::create($this->request_data);
     }
 
     public function show(Product $product) {
@@ -39,9 +46,7 @@ class ProductRepository {
 
         $this->validation($request);
 
-        $product->update($request->only(
-            'name', 'category_id', 'user_id', 'purchase_price', 'sell_price'
-        ));
+        $product->update($this->request_data);
     }
 
     public function delete(Product $product) {

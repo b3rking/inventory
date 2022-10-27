@@ -18,6 +18,10 @@
             <input type="text" name="name" id="" placeholder="mangoes" required value="{{ $product->name }}">
         </div>
         <div class="">
+            <label for="quantity">quantity</label>
+            <input type="text" name="quantity" placeholder="1" required value="{{ $product->quantity }}">
+        </div>
+        <div class="">
             <label for="category">category</label>
             <select name="category_id">
                 @foreach ($categories as $category)

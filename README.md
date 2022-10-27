@@ -14,42 +14,51 @@ Manage sales, payments, and transactions.
 View clients’ payment history.
 
 #### managing logic :
-- products: ✔
-- categories: ✔
-- receipts: ✔
-- users: ✔
-- clients: ✔
 
-- stock:
-    **** rethink
+-   products: ✔
+-   categories: ✔
+-   receipts: ✔
+-   users: ✔
+-   clients: ✔
 
-- receipts:
-    * receipts have (client name, product(s) name, sell price, qty, total price)
-    - create
-    - show one receipts (maybe printing one in pdf.. challenge hehe :))
-    - delete one
-    - view all
+-   stock:
+    \*\*\*\* rethink
 
-- sales:
-    * sales have a product name, qty, total price
-    - create
-    - show one sale
-    - delete
-    - view all
+-   receipts:
 
-- payments:
-    * payments have the client name, receipts
-    - create
-    - show one
-    - delete
-    - view all
-    - show one client payments
+    -   receipts have (client name, product(s) name, sell price, qty, total price)
 
-- transactions:
-    * transaction have the client, all the product on the receipts, receipts
-    - create
-    - show one
-    - delete
-    - view all
+    *   create
+    *   show one receipts (maybe printing one in pdf.. challenge hehe :))
+    *   delete one
+    *   view all
 
-- Reports and statistics on income and expenditure.
+-   sales:
+
+    -   sales have a product name, qty, total price
+
+    *   create
+    *   show one sale
+    *   delete
+    *   view all
+
+-   payments:
+
+    -   payments have the client name, receipts
+
+    *   create
+    *   show one
+    *   delete
+    *   view all
+    *   show one client payments
+
+-   transactions:
+
+    -   transaction have the client, all the product on the receipts, receipts
+
+    *   create
+    *   show one
+    *   delete
+    *   view all
+
+-   Reports and statistics on income and expenditure.
